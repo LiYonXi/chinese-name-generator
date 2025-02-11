@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        button { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>测试页面</h1>
+    <button onclick="testAPI()">测试 API</button>
+    <div id="result"></div>
+
+    <script>
+        async function testAPI() {
+            const API_CONFIG = {
+                apiKey: 'sk-xkiuhcpwstylowmfhnxfhuawwhzvxdfaupswxxmrkksbpkpf',
+                endpoint: 'https://api.siliconflow.cn/v1/chat/completions'
+            };
+
+            try {
+                const response = await fetch(API_CONFIG.endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${API_CONFIG.apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model: "google/gemma-2-9b-it",
+                        messages: [
+                            {
+                                role: "user",
+                                content: "Hello"
+                            }
+                        ]
+                    })
+                });
+
+                const data = await response.json();
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('result').textContent = '错误：' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>
