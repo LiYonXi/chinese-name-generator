@@ -6,24 +6,24 @@
 }
 
 body {
-    font-family: 'Microsoft YaHei', sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
+    font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: #f0f2f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
 }
 
 .container {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 30px;
+    width: 100%;
+    max-width: 800px;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* 头部样式 */
@@ -33,9 +33,10 @@ header {
 }
 
 header h1 {
-    color: #d4380d;
+    color: #1a1a1a;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 
 header p {
@@ -45,66 +46,80 @@ header p {
 
 /* 输入区域样式 */
 .input-section {
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
 input[type="text"] {
-    width: 80%;
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 15px;
-    transition: border-color 0.3s;
+    width: 100%;
+    max-width: 500px;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e8e8e8;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
 }
 
 input[type="text"]:focus {
-    border-color: #4CAF50;
+    border-color: #1890ff;
+    box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
     outline: none;
 }
 
 button {
-    background-color: #4CAF50;
+    background: #1890ff;
     color: white;
-    padding: 12px 30px;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
     border: none;
-    border-radius: 6px;
-    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 button:hover {
-    background-color: #45a049;
+    background: #40a9ff;
+    transform: translateY(-1px);
 }
 
 button:disabled {
-    background-color: #cccccc;
+    background: #bfbfbf;
     cursor: not-allowed;
+    transform: none;
 }
 
 /* 加载动画样式 */
 .loading {
     display: none;
     text-align: center;
-    margin: 20px 0;
+    margin: 2rem 0;
 }
 
 .loading-spinner {
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    border: 5px solid #f3f3f3;
-    border-top: 5px solid #4CAF50;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #1890ff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
 .loading-text {
-    margin-top: 15px;
+    margin-top: 1rem;
     color: #666;
-    font-size: 16px;
+}
+
+.loading-text p:first-child {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.loading-text p:last-child {
+    font-size: 0.9rem;
+    color: #999;
 }
 
 @keyframes spin {
@@ -113,83 +128,91 @@ button:disabled {
 }
 
 /* 结果区域样式 */
-.results {
+#results {
     display: none;
-    margin-top: 30px;
+    margin-top: 2rem;
 }
 
 .name-card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
 }
 
 .name-card:hover {
     transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .name-card h2 {
-    color: #2c3e50;
+    color: #1a1a1a;
     text-align: center;
-    margin: 0 0 10px 0;
-    font-size: 28px;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .name-card .meaning {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid #eee;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
 }
 
 .name-card h3 {
-    color: #666;
-    margin: 10px 0 5px 0;
-    font-size: 16px;
+    color: #333;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
 }
 
 .name-card p {
-    margin: 5px 0;
-    line-height: 1.5;
-    color: #555;
+    color: #666;
+    line-height: 1.6;
+    margin: 0.5rem 0;
 }
 
 /* 错误消息样式 */
 .error-message {
-    background-color: #fff2f0;
+    background: #fff2f0;
     border: 1px solid #ffccc7;
-    padding: 15px;
-    border-radius: 6px;
-    margin: 15px 0;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
     color: #ff4d4f;
 }
 
 .error-message h3 {
-    margin: 0 0 10px 0;
-    color: #ff4d4f;
+    color: #cf1322;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
-/* 页脚样式 */
-footer {
-    text-align: center;
-    margin-top: 3rem;
-    color: #666;
+.error-message p {
+    margin: 0;
+    font-size: 1rem;
 }
 
 /* 响应式设计 */
 @media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 1rem;
     }
 
     .container {
-        padding: 15px;
+        padding: 1.5rem;
     }
 
-    input[type="text"] {
-        width: 90%;
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .name-card {
+        padding: 1.5rem;
+    }
+
+    .name-card h2 {
+        font-size: 1.8rem;
     }
 }
