@@ -92,6 +92,9 @@ function displayResults(data) {
     const namesHtml = data.names.map((name, index) => createNameCard(name, index)).join('');
     resultsElement.innerHTML = namesHtml;
     resultsElement.style.display = 'block';
+
+    // 平滑滚动到结果区域
+    resultsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // 处理生成按钮点击
@@ -133,4 +136,48 @@ englishNameInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         handleGenerate();
     }
+});
+
+// 添加平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// 添加导航栏滚动效果
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+    
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+        
+    if (currentScroll <= 0) {
+        nav.style.transform = 'translateY(0)';
+        return;
+    }
+        
+    if (currentScroll > lastScroll) {
+        // 向下滚动
+        nav.style.transform = 'translateY(-100%)';
+    } else {
+        // 向上滚动
+        nav.style.transform = 'translateY(0)';
+    }
+        
+    lastScroll = currentScroll;
+});
+
+// 添加输入验证
+englishNameInput.addEventListener('input', (e) => {
+    const value = e.target.value.trim();
+    generateBtn.disabled = value.length === 0;
+    generateBtn.style.opacity = value.length === 0 ? '0.5' : '1';
 });
